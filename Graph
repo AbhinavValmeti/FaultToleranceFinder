@@ -1,0 +1,48 @@
+import java.util.*;
+import java.util.ArrayList;
+
+class Graph {
+	
+	public List getData(int numberOfNodes){
+		Scanner sc = new Scanner(System.in);
+		ArrayList<String> nodeList = new ArrayList<> ();
+		System.out.println("Please enter which nodes are connected to the following nodes (seperated by commas), for example: Node X: a,b,c.");
+		for(int count = 0; count < numberOfNodes; count++){
+			System.out.println("Node " + count + ":");
+			String cNodes = sc.nextLine();
+			nodeList.add(cNodes);
+		}
+		return nodeList;
+	}
+	
+	/* Node list is a list of strings with responses
+	It is input in createGraph() as datalist
+	It is split int strings which are split into tokens and stored in temp array
+	Then it is grouped up into node connections and added into arraylist nodeGraph
+	Node graph will be a list of arrays */
+	
+	public int[][] createGraph(List<String> dataList){
+		int[] nodeConnections = null;
+		int[][] nodeGraph = new int[dataList.size()][dataList.size()];
+		for(int x = 0; x < dataList.size(); x++) {
+			for(int y = 0; y < dataList.size(); y++) {
+				nodeGraph[x][y] = -1;
+			}
+		}
+		int timer = 0;
+		for(String data: dataList) {
+			String[] temp = data.split(",");
+			for(int count=0; count < temp.length; count++) {
+				nodeConnections = new int[temp.length];
+				nodeConnections[count] = Integer.parseInt(temp[count]);
+				nodeGraph[timer][count] = nodeConnections[count];
+				
+			}
+			timer++;
+		}
+		System.out.println(nodeGraph[0][0]);
+		System.out.println(nodeGraph[1][1]);
+		return nodeGraph;
+	}
+	
+}
