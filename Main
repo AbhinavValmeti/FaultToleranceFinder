@@ -1,0 +1,12 @@
+import java.util.*;
+class Main {
+public static void main(String[] args) {
+	
+    Scanner sc = new Scanner(System.in);
+    Graph gr = new Graph();
+    
+    System.out.println("Enter the number of nodes in your network:");
+    int numNodes = sc.nextInt();
+    gr.createGraph(gr.getData(numNodes));
+  }
+}
