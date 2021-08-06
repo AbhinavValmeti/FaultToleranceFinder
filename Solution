@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+
+public class Solution {
+
+	public boolean hasRoute(int [][] nodeGraph, ArrayList<Integer> visitedNodes, int s, int t) {
+
+        Graph gr = new Graph();
+        
+        if(s==t) return true;
+        visitedNodes.add(s);
+        for(int i=0;i<nodeGraph[0].length;i++){
+        	int neighbor = nodeGraph[s][i];
+        	if ((neighbor != -1) && !visited(visitedNodes, neighbor)) {
+        		if(hasRoute(nodeGraph, visitedNodes, neighbor ,t)) {
+        			return true;
+        		}
+        	}
+        }
+        return false;
+    }
+	
+	public boolean visited(ArrayList<Integer> visitedNodes, int neighbor) {
+		for (int x: visitedNodes) {
+			if (x==neighbor) {
+				return true;
+			}
+		}
+		return false;
+	}
+}
