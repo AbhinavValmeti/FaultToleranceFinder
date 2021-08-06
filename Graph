@@ -40,8 +40,6 @@ class Graph {
 			}
 			timer++;
 		}
-		System.out.println(nodeGraph[0][0]);
-		System.out.println(nodeGraph[1][1]);
 		return nodeGraph;
 	}
 	
