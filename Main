@@ -4,9 +4,22 @@ public static void main(String[] args) {
 	
     Scanner sc = new Scanner(System.in);
     Graph gr = new Graph();
+    Solution sl = new Solution();
+    
+    ArrayList<Integer> visitedNodes = new ArrayList<>();
     
     System.out.println("Enter the number of nodes in your network:");
     int numNodes = sc.nextInt();
-    gr.createGraph(gr.getData(numNodes));
+    int[][] terminal = gr.createGraph(gr.getData(numNodes));
+    for (int x = 1; x < terminal.length-1; x++) {
+    	visitedNodes.clear();
+    	visitedNodes.add(x);
+    	if (sl.hasRoute(terminal, visitedNodes, 0, terminal.length-1) == false) {
+    		System.out.println("Result: False");
+    		return;
+    	}
+    }
+    
+    System.out.println("Result: True");
   }
 }
